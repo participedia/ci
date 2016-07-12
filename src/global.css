@@ -1,0 +1,30 @@
+body {
+  padding: 2em;
+  font-family: "Open Sans";
+}
+
+.pure-g [class *="pure-u"] {
+  font-family: "Open Sans", sans-serif;
+}
+a {
+  color: rgb(20, 25, 180);
+}
+a:visited {
+  color: rgb(20, 25, 80);
+}
+
+.build .success {
+  color: rgb(50, 155, 50);
+}
+
+.build .failure {
+  color: rgb(250, 55, 50);
+}
+
+.build .NA {
+  color: rgb(50, 55, 210);
+}
+
+.build .comment {
+  font-style: italic;
+}
