@@ -7,22 +7,41 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 a {
-  color: rgb(20, 25, 180);
+  color: rgb(20, 25, 150);
 }
+
 a:visited {
   color: rgb(20, 25, 80);
 }
 
+.build {
+  padding-top: 1em;
+}
+
+.build .success, .build .failure {
+  color: white;
+  background-color: grey;
+  border-radius: 3px;
+  padding: 3px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 3px;
+  margin-right: 2em;
+  width: 50%;
+  text-align: center;
+  display: inline-block;
+}
+
 .build .success {
-  color: rgb(50, 155, 50);
+  background-color: rgb(50, 155, 50);
 }
 
 .build .failure {
-  color: rgb(250, 55, 50);
+  background-color: rgb(250, 55, 50);
 }
 
 .build .NA {
-  color: rgb(50, 55, 210);
+  background-color: rgb(50, 55, 210);
 }
 
 .build .comment {

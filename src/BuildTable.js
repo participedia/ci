@@ -14,9 +14,10 @@ var Build = React.createClass({
     let num = this.props.build.buildNum ? this.props.build.buildNum.N : 'no number'
     let status = this.props.build.status ? this.props.build.status.S : 'NA'
     let comment = this.props.build.comment.S
+    let commiturl = this.props.projecturl + "/commit/" + this.props.build.commit.S
     let contributors = this.props.build.committers.SS.map(function(username) {
       let usernameurl = 'https://github.com/'+username
-      return (<a href={usernameurl}>{username}</a>)}
+      return (<a href={usernameurl}>@{username}</a>)}
     ) // can we have multiple contributors?
 
     return (
@@ -24,11 +25,11 @@ var Build = React.createClass({
         <div className="pure-u-1-8">
           Build {num}
         </div>
-        <div className="pure-u-1-8">
-          <span className={status}>{status}</span>&nbsp;
+        <div className="pure-u-1-4">
+          <a href={commiturl}><span className={status}>{status}</span></a>&nbsp;
         </div>
-        <div className="pure-u-3-4">
-          (<span className="comment">“{comment}”</span> by {contributors})
+        <div className="pure-u-1-2">
+          (<a href={commiturl}><span className="comment">“{comment}”</span></a> by {contributors})
         </div>
       </div>
     )
@@ -43,16 +44,17 @@ var BuildList = React.createClass({
     }
     let key = 0
     let builds = this.props.data
+    let projecturl = ''
     var commentNodes = builds.map(function (build) {
       if (!build.status) {
-        let projecturl = 'https://github.com/' + build.project.S.slice(3, build.project.S.length)
+        projecturl = 'https://github.com/' + build.project.S.slice(3, build.project.S.length)
         return (
           <h2>For <a href={projecturl}>{build.project.S}</a></h2>
         )
       } else {
         key = key + 1
         return (
-          <Build key={key} build={build} />
+          <Build key={key} build={build} projecturl={projecturl} />
         )
       }
     })
